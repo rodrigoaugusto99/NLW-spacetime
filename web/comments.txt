@@ -1,0 +1,90 @@
+pdepois de ter feito a base do back, com node, ts e tsx, fastify e prisma com sqlite, vamos pra parte do front com next e react
+
+só sguir  a documentacao, npx create-next-app@latest
+
+criar outra pasta dentro do projeto, sair do server
+dar yes em tudo
+
+deu o npm run dev, sóp entrart no link
+
+deletar o redme, os dois arquivos do public, o favicon, apagar o css e html
+
+sobre o react. COMPONENTES
+sao forma da gente separar a tela grande, interface cheia d einformacoes, m varios pedacinhos menores, conheciods como componentes.
+sses componentes sao, no react, funcoes que retornam html. PURAMENTE ISSO
+o arquivo é .tsx, que é typescript + JSX. jsx ´js + xml (html)
+ntao esse tsx inkluci html deentro do javascript
+
+bom para organizacao e manuntencao e reutilizacao, reaprovitar comportamento e visual(interface) em varios locais da aplicacao
+
+vamos colocar o mesmo botao em varios lugars? criamos uma pasta components em src, Button.tsx. (Letra maiuscula quando nao é dentro de app)
+------------
+
+
+nao é assim: 
+
+<p style="color: #f00> Rodrigo</p>
+
+é assim:
+
+const styles = {
+    color: '#f00'
+}
+
+const nome = 'Rodrigo'
+
+<p style={styles}>{nome}</p>
+
+
+propriedades - segundo mais importante conceito do react
+- forma de passar informaçõs pra dentro de um componente
+
+<Button title="Rodrigo" /> - esse title é um atributo, lembra?
+Então, agora isso é uma propriedade.
+
+dá erro nesse title pq o Button(criado la no outro arquivo) nao tem title. o titulo nao é usado la.
+
+export function Button() {
+    return (
+        <p style={styles}>content</p>
+    )
+}
+
+teremos o props ali no parametro do Button
+
+export function Button(props) {
+    return (
+        <p style={styles}>{props.title}</p>
+    )
+}
+
+mas como é typescript, precisamos tipar.
+
+podemos fazer:
+
+interface ButtonProps {
+    title: string
+}
+
+export function Button(props: ButtonProps) {
+    return (
+        <p style={styles}>{props.title}</p>
+    )
+}
+
+
+agora que vimos de componente e propriedade, sobre o roteamento.
+
+o next ve que toda pasta dentro de app é uma pagina. por exemplo, dentro da pasta app tem uma pasta chamada rodrigo  que tem um arquivo chamado page.tsx,
+então no /rodrigo, será o conteudo dessa pastinha dentro da pasta rodrigo, assim pode ter ate subpástas, pastas dnmtrop de pastas, 
+endpoints dentrop de endpoints
+
+
+
+começando com tailwindCSS
+
+usamos classes e nao id ou arquivo css
+usamos className no react ao invs d class, pq como react é js, pode haver conflito com o class do js.
+
+npm i @rocketseat/eslint-config -D 
+npm i prettier-plugin-tailwindcss -D PRA DEIXAR O CODIGO MAIS B ONITO

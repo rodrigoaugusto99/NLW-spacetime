@@ -1,0 +1,55 @@
+npx é pra rodar arquivos binarios (tsc  tsx por exemplo)
+
+target no arquivo tsconfig, pra qual versao quero conveter o meu codigo p rodar em producao
+typescript + tsx
+node n roda ts por padrao, entao teria que converter o projeto antes pra js p dps executar. O tsx automatiza o processo
+roda ele como um script npx tsx ...projeto (tsx ée binario, entao usa npx antes)
+
+scripts no packag.json pra otimizar o nome p rodar o projeto.
+watch p ficar sendo exeecutando.
+
+hj nenhnyum projeto pra producao no node vai sem framework, principalmnete se estiver criando uma api restful, 
+que é uma aplicação que vai servir dados p/ frontend, fzr conexao com banco de dados. pois o framework ´cheio d perfomance, sgurança, otimização, etc
+
+fastify sem o -D pois vai ser usado em produçao.
+
+vams fazer api, pra isso, precisamos de um servidor http, enderço onde o front vai fgazer rquisicos http (post gt etc) e essas rquisicoes vao bater nsse servidor e 
+devolver uma resposta pra elas.
+ess servidor entao tem que ouvir uma url
+
+promise é tipo o Future do flutter. nele, podemos usar o metodo then.
+
+temos que fazer uma rota, criar um endpoint, só o localhost nao da nada
+com o metodo get, pois estamos acessando o endereço pelo navegador.
+entao, como testar os outros metodos? postman, imnsonia, etc.
+podmos usar o httpie p usar esses outros metodos aqui mesmo no proprio terminal
+(http POST localhost:3333/hello)
+
+prisma fica interceptando a conexao do banco com o backend, criando uma forma unificadada do backend acessar o banco com uma
+linguagem mais apropriada pra devs, sem selects, etc.
+usaremos sqlite pois é fire based, ou seja, fica um arquivo ali no projto, nao precisa baixar postgree, mysql, etc. 
+e o prisma tbm suporta todos eesses outros bancos.
+
+- instalar o prisma como ferramenta de desenvolvimento.
+npm i prisma -d
+só usaremos alguns comandos
+
+npx prisma init --datasource-provider SQLite
+para informar que queremos o usar o sqlite, e nao o postgres, que é o padrão dele.
+
+alem da pasta prisma, tbm tras o arquivo .env, que diz onde vai ficar nosso banco de dados.(podmos mudar o diretorio)
+.env é das variaveis de ambientes, que sao variaveis do projeto qu mudam d maquina para maquina
+
+ali no schema prisma vamos colocar as tabelas do banco de dados
+model, e nao table, pois como o prisma trabalha com todos os bancos, há alguns como os nosql, tipo mondodb, que nao falam tablem, mas sim collectinon
+@ para saber que será a chae primeira, ou seja, poderei fzr buscas pelo @id
+
+a tabela ta so no schema. entao npx prisma migrate dev, migrate é como se fosse um commit, tm ate msg
+
+tabela foi criada, mas como saber se foi criada meesma? podemos  ver numa ferramenta sql num banco,
+ou tambem podemos ver numa ferramenta integrada do prisma, o studio, qu abre o bagulho no navgeador
+npm prisma studio
+
+agora, vms fechar ess studio. vamos acessar o banco de dentro do servidor, da api.
+usnado o @prisma/client. 
+com isso,  podemos fazer as coisas, pegar os usuarios e exibir no navegador por ex.
