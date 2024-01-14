@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import fastify from 'fastify'
 import { memoriesRoutes } from './routes/memories'
 import cors from '@fastify/cors'
