@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
 
+    const redirectTo = request.cookies.get('redirectTo')?.value
+
     const { searchParams } = new URL(request.url)
     const code = searchParams.get('code')
 
@@ -12,7 +14,7 @@ export async function GET(request: NextRequest) {
 
     const { token } = registerResponse.data
 
-    const redirectUrl = new URL('/', request.url)
+    const redirectUrl = redirectTo ?? new URL('/', request.url)
 
     const cookiesExpiresInSeconds = 60 * 60 * 24 * 30
 
