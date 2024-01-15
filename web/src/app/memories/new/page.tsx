@@ -1,3 +1,4 @@
+import { MediaPicker } from "@/components/MediaPicker";
 import { Camera, ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -26,7 +27,9 @@ export default function NewMemory(){
 
                     
                 </div>
-                <input type="file" id="media" className="invisible h-0 w-0"/>
+
+                <MediaPicker />
+                
                 <textarea name="content" 
                     spellCheck={false} 
                     className="w-full flex-1 resize-none rounded border-0 bg-transparent text-lg leading-relaxed text-gray-100 placeholder:text-gray-400 focus:ring-0"
